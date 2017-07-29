@@ -1,0 +1,24 @@
+#
+# Dockerfile for Laravel
+#
+
+# Pull base image
+FROM ubuntu:latest
+
+MAINTAINER "Panhao Wu" <ekinghao@gmail.com>
+
+
+RUN apt-get update && \
+  	apt-get install -y curl  git zip && \
+  	apt-get install -y php-fpm php-mbstring php-xml php-zip && \
+   curl -sS https://getcomposer.org/installer | php && \
+   apt-get install -y nginx && \
+   mkdir /var/run && \
+   mv composer.phar /bin/composer
+
+COPY conf/default /etc/nginx/sites-available/default
+COPY entrypoint.sh /entrypoint.sh
+
+EXPOSE 80
+
+ENTRYPOINT ["/entrypoint.sh"]

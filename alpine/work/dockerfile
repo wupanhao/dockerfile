@@ -1,0 +1,8 @@
+FROM alpine:latest
+MAINTAINER Panhao Wu <ekinghao@gmail.com>
+RUN apk add update && \
+	apk add -y curl nmap socat tmux && \
+	apk add vim && \
+	rm -rf /var/cache/apk/*
+# EXPOSE 22
+CMD ["/bin/sh"]
