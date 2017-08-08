@@ -9,10 +9,10 @@ MAINTAINER "Panhao Wu" <ekinghao@gmail.com>
 
 
 RUN apt-get update && \
-  	apt-get install -y curl  git zip && \
-  	apt-get install -y php-fpm php-mbstring php-xml php-zip  && \
+  apt-get install -y curl  git zip && \
+  apt-get install -y php-fpm php-mbstring php-xml php-zip php-bcmath php-mysql && \
    curl -sS https://getcomposer.org/installer | php && \
-   apt-get install -y nginx && \
+   apt-get install -y nginx && rm -rf /var/cache/apk/*  && \
    mkdir /var/run && \
    mv composer.phar /bin/composer
 
